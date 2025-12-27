@@ -2,684 +2,855 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>REVO</title>
-    <link rel="icon" href="assets/icons/LOGO.png">
-    <link rel="stylesheet" href="styles//styles.css">
-
+    <link rel="icon" href="assets/icons/LOGO.png" />
+    <link rel="stylesheet" href="styles/styles.css" />
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            padding: 0;
-
+            font-family: "Montserrat", Arial, Helvetica, sans-serif;
+            color: #222;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background: #fff;
         }
 
-        section {
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
             display: block;
-            unicode-bidi: isolate;
-        }
-
-        .home {
-            width: 100%;
-            height: 100vh;
         }
 
         .header {
-            z-index: 1001;
-            /* font-family: "Montserrat"; */
-
-            .header-image {
-                margin-bottom: 10px;
-            }
-
-            /* padding: 25px; */
-            padding-left: 35px;
-            padding-right: 25px;
-            padding-top: 65px;
-            height: 100vh;
-
-            /* flex-direction: column; */
-            position: absolute;
-            width: 15%;
-            background-color:rgb(112, 132, 135);
+            position: fixed;
+            top: 0;
             right: 0;
-
-            .header-menu-top {
-                padding-top: 25px;
-                font-size: 22px;
-                color: rgb(255, 255, 255)
-            }
-
-            .header-menu {
-                padding-top: 25px;
-                font-size: 14px;
-                color: rgb(244, 244, 244)
-            }
-
+            height: 100vh;
+            width: 16%;
+            background: rgb(112, 132, 135);
+            padding: 40px 20px 20px 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            align-items: flex-start;
+            color: #fff;
         }
 
-        .home-main {
-            position: relative;
-
+        .header__image img {
+            width: 42px;
+            height: auto;
+            display: block;
         }
 
-        .home-logo {
-            right: 80%;
-            top: 10vh;
-            position: absolute;
-            max-height: 100vh;
-        }
-
-        .home-banner {
-            right: 15%;
-            position: absolute;
-            width: 50%;
-            max-height: 100vh;
-
-        }
-
-        .home-text {
-            font-family: "Montserrat";
-
-            position: absolute;
-            top: 65vh;
-            right: 60vw;
-            text-align: left;
-        }
-
-        .home-plain-text,
-        .home-text-boxed {
+        .header__menu-top {
             margin: 0;
-            font-size: 48px;
+            font-size: 18px;
+            letter-spacing: 0.04em;
         }
 
-        .home-plain-text {
-            padding-left: 5px;
-            padding-right: 5px;
+        .nav {
+            width: 100%;
         }
 
-        .home-text-boxed {
-            background-color: rgb(188, 167, 90);
-            padding-left: 5px;
-            padding-right: 5px;
-            color: white;
-            font-weight: bold;
+        .nav__list {
+            list-style: none;
+            margin: 10px 0 0 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .header__menu a {
+            display: block;
+            padding: 8px 10px;
+            border-radius: 6px;
+            color: #f4f4f4;
+            font-size: 14px;
+        }
+
+        .header__menu a:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        main {
+            margin-right: 16%;
+            min-height: 100vh;
+        }
+
+        section {
+            padding: 36px 6% 48px 6%;
+            position: relative;
+        }
+
+        .home__main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .home__logo {
+            flex: 0 0 160px;
+            max-width: 160px;
+        }
+
+        .home__banner {
+            flex: 1 1 480px;
+            max-width: 720px;
+        }
+
+        .home__text {
+            flex: 1 1 240px;
+            text-align: left;
+            min-width: 220px;
+        }
+
+        .home__plain-text,
+        .home__text-boxed {
+            margin: 0;
+            font-size: clamp(20px, 4.0vw, 48px);
+            line-height: 1;
+        }
+
+        .home__text-boxed {
+            display: inline-block;
+            background: #b38936;
+            color: #fff;
+            padding: 6px 8px;
+            font-weight: 700;
         }
 
         .coffee {
-            height: 90vh;
-            display: flex;
-
-            padding-top: 40px;
+            padding-top: 12px;
+            padding-bottom: 36px;
         }
 
-        .coffee-text {
-            height: 10vh;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
+        .coffee__text {
             text-align: center;
-            color: rgb(90, 90, 218);
-            height: 10vh;
-            position: absolute;
+            margin-bottom: 18px;
         }
 
-        .coffee-top-text {
-            font-size: 20px;
-            color: rgb(90, 90, 218);
+        .coffee__top-text {
+            font-size: 16px;
+            color: #5a5afd;
+            margin: 0;
         }
 
-        .coffee-bottom-text {
-            font-size: 30px;
-            margin-bottom: 80px;
-            font-weight: bold;
+        .coffee__bottom-text {
+            font-size: 24px;
+            color: #5a5afd;
+            font-weight: 700;
+            margin: 6px 0 0 0;
         }
 
-        .coffee-row {
-            position: relative;
-            top: 25vh;
+        .coffee__row {
             display: flex;
-            gap: 12vw;
+            gap: 2.6rem;
             align-items: flex-start;
             justify-content: center;
-            width: 100%;
-            height: 35vh;
+            flex-wrap: wrap;
+            margin-top: 18px;
         }
 
-        .coffee-item {
+        .coffee__item {
+            flex: 0 1 180px;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.6rem;
             text-align: center;
+            padding: 12px;
         }
 
-        .coffee-caption {
-            font-size: 25px;
-            font-weight: bold;
+        .coffee__caption {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
         }
 
-        .coffee-bottom-caption {
-            font-size: 16px;
+        .coffee__bottom-caption {
+            font-size: 14px;
+            margin: 0;
+            color: #666;
         }
 
         .combo {
-            display: flex;
-            height: 115vh;
+            display: block;
+            position: relative;
+            padding-top: 32px;
+            padding-bottom: 32px;
+            overflow: visible;
         }
 
-        .combo-blue-background {
-            height: 115vh;
+        .combo__blue-background {
+            position: absolute;
+            right: 0;
+            top: 0;
             width: 30%;
-            background-color: rgb(104, 104, 209);
+            height: 100%;
+            background: rgb(104, 104, 209);
+            z-index: 1;
         }
 
-        .combo-text {
-            height: 10vh;
-            padding-top: 5vh;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
+        .combo__text {
             text-align: center;
-            color: rgb(90, 90, 218);
-            position: absolute;
-
+            margin-bottom: 18px;
         }
 
-        .combo-bold-text {
-            font-size: 25px;
-            font-weight: bold;
-        }
-
-        .menu-grid {
-            position: absolute;
-            margin-top: 15vh;
+        .combo__menu-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            padding: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            position: relative;
+            z-index: 3;
         }
 
-        .menu-card {
+        .combo__menu-card {
             display: flex;
-            background: white;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 25px;
+            gap: 18px;
+            align-items: center;
+            background: #fff;
+            padding: 18px;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
         }
 
-        .menu-img {
-            height: 130px;
-            margin-right: 25px;
+        .combo__menu-img {
+            width: 130px;
+            height: auto;
+            flex: 0 0 130px;
+            object-fit: cover;
         }
 
-        .menu-info {
+        .combo__menu-info {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            gap: 8px;
         }
 
-        .menu-price {
-            font-size: 22px;
+        .combo__menu-price {
             color: #b38936;
-            font-weight: bold;
-            margin-bottom: 6px;
-        }
-
-        .menu-title {
-            font-size: 20px;
             font-weight: 700;
-            margin-bottom: 10px;
+            font-size: 18px;
+            margin: 0;
         }
 
-        .menu-desc {
-            font-size: 15px;
+        .combo__menu-title {
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .combo__menu-desc {
+            margin: 0;
+            font-size: 14px;
             color: #666;
-            margin-bottom: 15px;
         }
 
-        .menu-actions {
+        .combo__menu-actions {
             display: flex;
+            gap: 12px;
             align-items: center;
-            gap: 20px;
+            margin-top: 6px;
         }
 
-        .menu-buy {
+        .combo__menu-buy {
             background: #b38936;
-            color: white;
-            padding: 8px 18px;
-            border: none;
+            color: #fff;
+            padding: 8px 16px;
             border-radius: 30px;
+            border: none;
             cursor: pointer;
             font-weight: 600;
         }
-        .giftset{
-            height: 100vh;
+
+        .giftset {
+            display: block;
             position: relative;
         }
-        .giftset-background{
-            height: 100vh;
-            width: 75%;
-            z-index: 1;
-            background-color: rgb(205, 195, 195);
-        }
-        .giftset-text{
+
+        .giftset__background {
             position: absolute;
-            height: 10vh;
-            top: 10vh;
-            color: rgb(90, 90, 218);
+            left: 0;
+            top: 0;
+            width: 75%;
+            height: 100%;
+            background: #cdc3c3;
+            z-index: 1;
+        }
+
+        .giftset__text {
+            text-align: center;
+            margin: 8px 0 18px 0;
             z-index: 2;
-            width: 100%;
+            position: relative;
+        }
+
+        .giftset__white-block {
+            position: relative;
+            z-index: 3;
+            background: #f5f1f1;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            min-height: 95vh;
+        }
+
+        .giftset__pic {
+            display: flex;
+            gap: 20px;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            flex-wrap: wrap;
         }
-        .giftset-text-bold{
-            font-weight: bold;
-            font-size: 25px;
+
+        .giftset__block-price {
+            color: #b38936;
+            font-weight: 700;
         }
-        .giftset-pic{
-            z-index: 3;
-            position: absolute;
-            top: 30vh;
-            margin-left: 10%;
+
+        .giftset__block-name {
+            font-weight: 700;
         }
-        .giftset-white-block{
-            z-index: 2;
-            position: absolute;
-            top: 25vh;
-            margin-left: 35%;
-            background-color: rgb(224, 213, 213);
-            height: 70%;
-            width: 55%;
+
+        .giftset__block-text {
+            color: #444;
+            font-size: 14px;
         }
-        .giftset-block-price{
-            position: absolute;
-            top:10vh;
-            z-index: 5;
-            color: orange;
-            font-weight: bold;
-            margin-left: 35%;
-        }
-        .giftset-block-name{
-            position: absolute;
-            top: 15vh;
-            z-index: 5;
-            color:black;
-            font-weight: bold;
-            margin-left: 35%;
-        }
-        .giftset-block-text{
-            width: 50%;;
-            position: absolute;
-            top: 20vh;
-            z-index: 5;
-            color:black;
-            margin-left: 35%;
-        }
-        .giftset-block-first-pic{
-            position: absolute;
-            top: 40vh;
-            z-index: 5;
-            margin-left: 35%;
-        }
-        .giftset-block-second-pic{
-            position: absolute;
-            top: 40vh;
-            z-index: 5;
-            margin-left: 55%;
-        }
-        .giftset-block-first-pic-text{
-            position: absolute;
-            top: 40vh;
-            z-index: 5;
-            margin-left: 42%;
-            font-weight: bold;
-        }
-        .giftset-block-second-pic-text{
-            position: absolute;
-            top: 40vh;
-            z-index: 5;
-            margin-left: 62%;
-            font-weight: bold;
-        }
-        .giftset-block-button{
-            position: absolute;
-            top: 55vh;
+
+        .giftset__pics {
             display: flex;
-            margin-left: 35%;
-            gap: 5vw;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .grid-combo{
-            height: 105vh;
-            width: 100%;
+
+        .giftset__block-button {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            padding-top: 6px;
+        }
+
+        .grid-combo {
+            padding-top: 36px;
+            padding-bottom: 36px;
             position: relative;
         }
-        .grid-combo-background{
-            height: 100vh;
-            width: 30%;
+
+        .grid-combo__background {
+            position: absolute;
             right: 0;
-            background-color: rgb(104, 104, 209);
-            z-index: 4;
-            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 30%;
+            background: rgb(104, 104, 209);
+            z-index: 1;
         }
-        .grid-combo-block{
-            z-index: 6;
-            height: 65vh;
-            width: 80vw;
+
+        .grid-combo__block {
             position: relative;
-            top: 25vh;
-            margin-left: 10%;
+            z-index: 3;
             display: flex;
-            gap: 10vw;
+            gap: 4vw;
             align-items: flex-start;
             justify-content: center;
-            
+            flex-wrap: wrap;
         }
-        .grid-combo-block-item{
+
+        .grid-combo__block-item {
+            flex: 0 1 260px;
+            min-width: 200px;
             display: flex;
-            height: 100%;
-            width: 25%;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            gap: 12px;
         }
-        .grid-combo-block-item-image{
-            height: 50%;
-            z-index: 10;
-            position: absolute;
+
+        .grid-combo__block-background {
+            background: #f0efef;
+            padding: 14px;
+            border-radius: 8px;
+            width: 100%;
         }
-        .grid-combo-block-background{
-            height: 50%;
-            top: 80%;
-            width: 25vw;
-            z-index: 10;
-            position: absolute;
-            background-color: rgb(226, 226, 218);
+
+        footer {
+            height: 40px;
         }
-        .menu-actions-grid{
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-left: 3vw;
+
+        .content-grid {
+            padding: 80px 5%;
+            background: #f9f9f9;
+            text-align: center;
         }
-        
+
+        .content-grid__title {
+            font-size: 32px;
+            font-weight: bold;
+            color: rgb(90, 90, 218);
+            margin-bottom: 50px;
+        }
+
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 20px;
+            column-fill: balance;
+        }
+
+        .masonry-item {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+            break-inside: avoid;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .masonry-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 1199px) {
+            .header {
+                width: 20%;
+            }
+
+            main {
+                margin-right: 20%;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .header {
+                width: 26%;
+                padding: 18px;
+            }
+
+            main {
+                margin-right: 26%;
+            }
+
+            .combo__menu-grid {
+                grid-template-columns: 1fr;
+            }
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .header {
+                position: fixed;
+                width: 100%;
+                height: 56px;
+                right: auto;
+                left: 0;
+                top: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 8px 12px;
+            }
+
+            .header__image img {
+                width: 28px;
+            }
+
+            .header__menu-top {
+                display: none;
+            }
+
+            .nav__list {
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+                overflow-x: auto;
+                padding: 6px 4px;
+                margin: 0;
+                align-items: center;
+            }
+
+            main {
+                margin-right: 0;
+                padding-top: 72px;
+            }
+
+            .home__main {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 12px;
+            }
+
+            .home__logo {
+                margin: 6px 0;
+                max-width: 120px;
+            }
+
+            .home__banner {
+                width: 80%;
+                max-width: 420px;
+                margin: 6px 0;
+            }
+
+            .home__text {
+                order: 3;
+                margin-bottom: 6px;
+                text-align: center;
+            }
+
+            .combo__blue-background,
+            .grid-combo__background,
+            .giftset__background {
+                display: none;
+            }
+
+            .combo__menu-grid {
+                grid-template-columns: 1fr;
+                padding: 12px;
+                gap: 14px;
+            }
+
+            .combo__menu-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 14px;
+            }
+
+            .combo__menu-img {
+                width: 140px;
+                height: auto;
+                margin-bottom: 8px;
+            }
+
+            .giftset__white-block {
+                width: 92%;
+                margin: 8px auto;
+            }
+
+            .giftset__pics {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .grid-combo__block {
+                flex-direction: column;
+                gap: 18px;
+                width: 92%;
+                margin: 0 auto;
+            }
+            .masonry-grid {
+                column-count: 1;
+            }
+
+            .content-grid {
+                padding: 60px 5%;
+            }
+
+            .content-grid__title {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+        }  
     </style>
 </head>
 
 <body>
-    <header class="header">
-        <div>
-            <img class="header-image" src="assets/icons/shopping-cart.png">
-
-        </div>
-        <div>
-            <h3 class="header-menu-top"> МЕНЮ </h3>
-        </div>
-        <nav>
-            <ul>
-                <li class="header-menu">
-                    <a href="#home">ГЛАВНАЯ</a>
-                </li>
-                <li class="header-menu">
-                    <a href="#coffee">КОФЕ</a>
-                </li>
-                <li class="header-menu">
-                    <a href="#combo">КОМБО</a>
-                </li>
-                <li class="header-menu">
-                    <a href="#giftset">ПОДАРОЧНЫЕ НАБОРЫ</a>
-                </li>
-                <li class="header-menu">
-                    <a href="#grid-combo">ЕЩЕ НАБОРЫ</a>
-                </li>
-
+    <header class="header" role="banner">
+        <div class="header__image"><img src="assets/icons/shopping-cart.png" alt="logo"></div>
+        <div class="header__menu-top">МЕНЮ</div>
+        <nav class="nav" role="navigation" aria-label="Главная навигация">
+            <ul class="nav__list">
+                <li class="header__menu"><a href="#home">ГЛАВНАЯ</a></li>
+                <li class="header__menu"><a href="#coffee">КОФЕ</a></li>
+                <li class="header__menu"><a href="#combo">КОМБО</a></li>
+                <li class="header__menu"><a href="#giftset">ПОДАРОЧНЫЕ НАБОРЫ</a></li>
+                <li class="header__menu"><a href="#grid-combo">ЕЩЕ НАБОРЫ</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="home", id="home">
-            <div class="home-main">
-                <div>
-                    <img class="home-logo" src="assets/icons/LOGO.png" alt="">
+        <section class="home" id="home">
+            <div class="home__main">
+                <div class="home__logo">
+                    <img src="assets/icons/LOGO.png" alt="REVO logo">
                 </div>
-                <div>
-                    <img class="home-banner" src="assets/img/Banner.png" alt="">
+
+                <div class="home__banner">
+                    <img src="assets/img/Banner.png" alt="Banner">
                 </div>
-                <div class="home-text">
-                    <p class="home-plain-text">YOUR</p>
-                    <p class="home-text-boxed">PERSONALIZED</p>
-                    <p class="home-plain-text">COFFEE</p>
+
+                <div class="home__text">
+                    <p class="home__plain-text">YOUR</p>
+                    <p class="home__text-boxed">PERSONALIZED</p>
+                    <p class="home__plain-text">COFFEE</p>
                 </div>
             </div>
         </section>
-        <section class="coffee", id="coffee">
-            <div class="coffee-text">
-                <p class="coffee-top-text">Your Personalized Coffee</p>
-                <p class="coffee-bottom-text">COFFEE BUILD YOUR BASE</p>
+
+        <section class="coffee" id="coffee">
+            <div class="coffee__text">
+                <p class="coffee__top-text">Your Personalized Coffee</p>
+                <p class="coffee__bottom-text">COFFEE BUILD YOUR BASE</p>
             </div>
-            <div class="coffee-row">
-                <div class="coffee-item">
-                    <img src="assets/icons/icon-store.png" class="coffee-icon" alt="">
-                    <p class="coffee-caption">Источник</p>
-                    <p class="coffee-bottom-caption">Мы выбираем фермы с идеальной репутацией.</p>
+
+            <div class="coffee__row">
+                <div class="coffee__item">
+                    <img src="assets/icons/icon-store.png" class="coffee__icon" alt="">
+                    <p class="coffee__caption">Источник</p>
+                    <p class="coffee__bottom-caption">Мы выбираем фермы с идеальной репутацией.</p>
                 </div>
 
-                <div class="coffee-item">
-                    <img src="assets/icons/icon-coffee-dangle.png" class="coffee-icon" alt="">
-                    <p class="coffee-caption">Качество</p>
-                    <p class="coffee-bottom-caption">Зерна проходят контроль на каждом этапе.</p>
-
+                <div class="coffee__item">
+                    <img src="assets/icons/icon-coffee__dangle.png" class="coffee__icon" alt="">
+                    <p class="coffee__caption">Качество</p>
+                    <p class="coffee__bottom-caption">Зерна проходят контроль на каждом этапе.</p>
                 </div>
 
-                <div class="coffee-item">
-                    <img src="assets/icons/icon-coffee-jar.png" class="coffee-icon" alt="">
-                    <p class="coffee-caption">Зерна</p>
-                    <p class="coffee-bottom-caption">Только свежие арабика высшего сорта.</p>
-
+                <div class="coffee__item">
+                    <img src="assets/icons/icon-coffee__jar.png" class="coffee__icon" alt="">
+                    <p class="coffee__caption">Зерна</p>
+                    <p class="coffee__bottom-caption">Только свежие арабика высшего сорта.</p>
                 </div>
 
-                <div class="coffee-item">
-                    <img src="assets/icons/icon-cup.png" class="coffee-icon" alt="">
-                    <p class="coffee-caption">Обжарка</p>
-                    <p class="coffee-bottom-caption">Обжариваем малыми партиями для вкуса.</p>
-
+                <div class="coffee__item">
+                    <img src="assets/icons/icon-cup.png" class="coffee__icon" alt="">
+                    <p class="coffee__caption">Обжарка</p>
+                    <p class="coffee__bottom-caption">Обжариваем малыми партиями для вкуса.</p>
                 </div>
             </div>
         </section>
-        <section class="combo", id="combo">
-            <div class="combo-blue-background">
-            </div>
-            <div class="combo-text">
+
+        <section class="combo" id="combo">
+            <div class="combo__blue-background" aria-hidden="true"></div>
+
+            <div class="combo__text">
                 <p>Выбери свой любимый кофе</p>
-                <p class="combo-bold-text">Точно ваш вкус</p>
-            </div>
-            <div class="menu-grid">
-
-                <div class="menu-card">
-                    <img src="assets/img/menuFirst.png" class="menu-img">
-                    <div class="menu-info">
-                        <p class="menu-price">99.000</p>
-                        <p class="menu-title">REVO Morning</p>
-                        <p class="menu-desc">горький, сладкое послевкусие, цветочный аромат</p>
-
-                        <div class="menu-actions">
-                            <button class="menu-buy">КУПИТЬ</button>
-                            <a href="#">ПОДРОБНЕЕ</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <img src="assets/img/menuThird.png" class="menu-img">
-                    <div class="menu-info">
-                        <p class="menu-price">139.000</p>
-                        <p class="menu-title">REVO Origin</p>
-                        <p class="menu-desc">мягкий, лёгкая горчинка, ягодные ноты</p>
-
-                        <div class="menu-actions">
-                            <button class="menu-buy">КУПИТЬ</button>
-                            <a href="#">ПОДРОБНЕЕ</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <img src="assets/img/menuSecond.png" class="menu-img">
-                    <div class="menu-info">
-                        <p class="menu-price">85.000</p>
-                        <p class="menu-title">REVO Everyday</p>
-                        <p class="menu-desc">баланс, горчинка, лёгкий шоколад</p>
-
-                        <div class="menu-actions">
-                            <button class="menu-buy">КУПИТЬ</button>
-                            <a href="#">ПОДРОБНЕЕ</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-card">
-                    <img src="assets/img/menuFourth.png" class="menu-img">
-                    <div class="menu-info">
-                        <p class="menu-price">75.000</p>
-                        <p class="menu-title">REVO da da</p>
-                        <p class="menu-desc">насыщенный вкус, традиционная обжарка</p>
-
-                        <div class="menu-actions">
-                            <button class="menu-buy">КУПИТЬ</button>
-                            <a href="#">ПОДРОБНЕЕ</a>
-                        </div>
-                    </div>
-                </div>
-
+                <p class="combo__bold-text">Точно ваш вкус</p>
             </div>
 
+            <div class="combo__menu-grid">
+                <div class="combo__menu-card">
+                    <img src="assets/img/menuFirst.png" class="combo__menu-img" alt="">
+                    <div class="combo__menu-info">
+                        <p class="combo__menu-price">99.000</p>
+                        <p class="combo__menu-title">REVO Morning</p>
+                        <p class="combo__menu-desc">горький, сладкое послевкусие, цветочный аромат</p>
+                        <div class="combo__menu-actions">
+                            <button class="combo__menu-buy">КУПИТЬ</button>
+                            <a href="#">ПОДРОБНЕЕ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="combo__menu-card">
+                    <img src="assets/img/menuThird.png" class="combo__menu-img" alt="">
+                    <div class="combo__menu-info">
+                        <p class="combo__menu-price">139.000</p>
+                        <p class="combo__menu-title">REVO Origin</p>
+                        <p class="combo__menu-desc">мягкий, лёгкая горчинка, ягодные ноты</p>
+                        <div class="combo__menu-actions">
+                            <button class="combo__menu-buy">КУПИТЬ</button>
+                            <a href="#">ПОДРОБНЕЕ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="combo__menu-card">
+                    <img src="assets/img/menuSecond.png" class="combo__menu-img" alt="">
+                    <div class="combo__menu-info">
+                        <p class="combo__menu-price">85.000</p>
+                        <p class="combo__menu-title">REVO Everyday</p>
+                        <p class="combo__menu-desc">баланс, горчинка, лёгкий шоколад</p>
+                        <div class="combo__menu-actions">
+                            <button class="combo__menu-buy">КУПИТЬ</button>
+                            <a href="#">ПОДРОБНЕЕ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="combo__menu-card">
+                    <img src="assets/img/menuFourth.png" class="combo__menu-img" alt="">
+                    <div class="combo__menu-info">
+                        <p class="combo__menu-price">75.000</p>
+                        <p class="combo__menu-title">REVO da da</p>
+                        <p class="combo__menu-desc">насыщенный вкус, традиционная обжарка</p>
+                        <div class="combo__menu-actions">
+                            <button class="combo__menu-buy">КУПИТЬ</button>
+                            <a href="#">ПОДРОБНЕЕ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section class="giftset", id="giftset">
 
-            <div class="giftset-background"></div>
-        
-            <div class="giftset-text">
+        <section class="giftset" id="giftset">
+            <div class="giftset__background" aria-hidden="true"></div>
+
+            <div class="giftset__text">
                 <p>Best Gift For Best Friend</p>
-                <p class="giftset-text-bold">GIFTSET</p>
+                <p class="giftset__text-bold">GIFTSET</p>
             </div>
-        
-            <div class="giftset-white-block">
-                <div class="giftset-block-price">
+
+            <div class="giftset__white-block">
+                <div class="giftset__block-price">
                     <p>285.000</p>
                 </div>
-                <div class="giftset-block-name">
+                <div class="giftset__block-name">
                     <p>GIFTSET "HOROSHIY GIFT"</p>
                 </div>
-                <div class="giftset-block-text">
-                    <i>С другой стороны дальнейшее развитие различных форм деятельности играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям.</i>
+                <div class="giftset__block-text"><i>С другой стороны дальнейшее развитие различных форм деятельности
+                        играет важную роль в формировании системы обучения кадров, соответствует насущным
+                        потребностям.</i></div>
+                <div class="giftset__pic" style="text-align:center; margin-top:16px;">
+                    <img src="assets/img/giftset.png" alt="">
                 </div>
-                <div class="giftset-block-first-pic">
-                    <img src="assets/icons/IC-coffee.png" >
+                <div class="giftset__pics">
+                    <div class="giftset__block-first-pic">
+                        <img src="assets/icons/IC-coffee.png" alt="Кофе">
+                        <div class="giftset__block-first-pic-text">
+                            <p>Зерна?</p>
+                            <p>ЗЕРНА!</p>
+                        </div>
+                    </div>
+
+                    <div class="giftset__block-second-pic">
+                        <img src="assets/icons/IC-Mountain.png" alt="Горы">
+                        <div class="giftset__block-second-pic-text">
+                            <p>Горы?</p>
+                            <p>ГОРЫ!</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="giftset-block-second-pic">
-                    <img src="assets/icons/IC-Mountain.png">
-                </div>
-                <div class="giftset-block-first-pic-text">
-                    <p>Зерна?</p>
-                    <p>ЗЕРНА!</p>
-                </div>
-                <div class="giftset-block-second-pic-text">
-                    <p>Горы?</p>
-                    <p>ГОРЫ!</p>
-                </div>
-                <div class="giftset-block-button">
-                    <button class="menu-buy">КУПИТЬ</button>
+
+                <div class="giftset__block-button">
+                    <button class="giftset__menu-buy">КУПИТЬ</button>
                     <a href="#">ПОДРОБНЕЕ</a>
                 </div>
             </div>
-            
-            <div class="giftset-pic">
-                <img src="assets/img/giftset.png">
-            </div>
-        
-            
-        
+
+
         </section>
-        <section class="grid-combo", id="grid-combo">
-            <div class="giftset-text">
+
+        <section class="grid-combo" id="grid-combo">
+            <div class="grid-combo__background" aria-hidden="true"></div>
+
+            <div class="giftset__text">
                 <p>Best Gift For Best Friend</p>
-                <p class="giftset-text-bold">GIFTSET</p>
+                <p class="giftset__text-bold">GIFTSET</p>
             </div>
-            <div class="grid-combo-background"></div>
-            <div class="grid-combo-block">
-                <div class="grid-combo-block-item">
-                    <div class="grid-combo-block-item-image">
-                        <img src="assets/img/comboFirst.png">
+
+            <div class="grid-combo__block">
+                <div class="grid-combo__block-item">
+                    <div class="grid-combo__block-item-image">
+                        <img src="assets/img/comboFirst.png" alt="">
                     </div>
-                    <div class="grid-combo-block-background">
-                        <div class="menu-price">
+                    <div class="grid-combo__block-background">
+                        <div class="grid-combo__menu-price">
                             <p>147.000</p>
                         </div>
-                        <div class="menu-title">
+                        <div class="grid-combo__menu-title">
                             <p>Combo REVO 1</p>
                         </div>
-                        <div class="menu-desc">
-                            <i>Задача организации, в особенности же реализация намеченных плановых заданий способствует подготовки и реализации форм развития.</i>
-                        </div>
-                        <div class="menu-actions-grid">
-                            <button class="menu-buy">КУПИТЬ</button>
+                        <div class="grid-combo__menu-desc"><i>Задача организации, в особенности же реализация намеченных
+                                плановых заданий способствует подготовки и реализации форм развития.</i></div>
+                        <div class="grid-combo__menu-actions-grid">
+                            <button class="grid-combo__menu-buy">КУПИТЬ</button>
                             <a href="#">ПОДРОБНЕЕ</a>
                         </div>
                     </div>
-                    
                 </div>
-                <div class="grid-combo-block-item">
-                    <div class="grid-combo-block-item-image">
-                        <img src="assets/img/comboSecond.png">
+
+                <div class="grid-combo__block-item">
+                    <div class="grid-combo__block-item-image">
+                        <img src="assets/img/comboSecond.png" alt="">
                     </div>
-                    <div class="grid-combo-block-background">
-                        <div class="menu-price">
+                    <div class="grid-combo__block-background">
+                        <div class="grid-combo__menu-price">
                             <p>156.000</p>
                         </div>
-                        <div class="menu-title">
+                        <div class="grid-combo__menu-title">
                             <p>Combo REVO 2</p>
                         </div>
-                        <div class="menu-desc">
-                            <i>Задача организации, в особенности же реализация намеченных плановых заданий способствует подготовки и реализации форм развития.</i>
-                        </div>
-                        <div class="menu-actions-grid">
-                            <button class="menu-buy">КУПИТЬ</button>
+                        <div class="grid-combo__menu-desc"><i>Задача организации, в особенности же реализация намеченных
+                                плановых заданий способствует подготовки и реализации форм развития.</i></div>
+                        <div class="grid-combo__menu-actions-grid">
+                            <button class="grid-combo__menu-buy">КУПИТЬ</button>
                             <a href="#">ПОДРОБНЕЕ</a>
                         </div>
                     </div>
-
                 </div>
-                <div class="grid-combo-block-item">
-                    <div class="grid-combo-block-item-image">
-                        <img src="assets/img/comboThird.png">
+
+                <div class="grid-combo__block-item">
+                    <div class="grid-combo__block-item-image">
+                        <img src="assets/img/comboThird.png" alt="">
                     </div>
-                    <div class="grid-combo-block-background">
-                        <div class="menu-price">
+                    <div class="grid-combo__block-background">
+                        <div class="grid-combo__menu-price">
                             <p>275.000</p>
                         </div>
-                        <div class="menu-title">
+                        <div class="grid-combo__menu-title">
                             <p>Combo REVO 3</p>
                         </div>
-                        <div class="menu-desc">
-                            <i>Задача организации, в особенности же реализация намеченных плановых заданий способствует подготовки и реализации форм развития.</i>
-                        </div>
-                        <div class="menu-actions-grid">
-                            <button class="menu-buy">КУПИТЬ</button>
+                        <div class="grid-combo__menu-desc"><i>Задача организации, в особенности же реализация намеченных
+                                плановых заданий способствует подготовки и реализации форм развития.</i></div>
+                        <div class="grid-combo__menu-actions-grid">
+                            <button class="grid-combo__menu-buy">КУПИТЬ</button>
                             <a href="#">ПОДРОБНЕЕ</a>
                         </div>
                     </div>
-
                 </div>
+            </div>
+        </section>
+
+        <section class="content-grid" id="content-grid">
+
+            <div class="masonry-grid">
+                <img src="assets/img/coffee-grid1.jpg" alt="Кофе REVO 1" class="masonry-item">
+                <img src="assets/img/coffee-grid2.jpg" alt="Кофе REVO 2" class="masonry-item">
+                <img src="assets/img/coffee-grid3.jpg" alt="Кофе REVO 3" class="masonry-item">
+                <img src="assets/img/coffee-grid4.jpg" alt="Кофе REVO 4" class="masonry-item">
+                <img src="assets/img/coffee-grid5.jpg" alt="Кофе REVO 5" class="masonry-item">
+                <img src="assets/img/coffee-grid6.jpg" alt="Кофе REVO 5" class="masonry-item">
+                <img src="assets/img/coffee-grid7.jpg" alt="Кофе REVO 5" class="masonry-item">
+                <img src="assets/img/coffee-grid8.jpg" alt="Кофе REVO 5" class="masonry-item">
+                <img src="assets/img/coffee-grid9.jpg" alt="Кофе REVO 5" class="masonry-item">
+
             </div>
         </section>
     </main>
 
-    <footer>
-
-    </footer>
+    <footer></footer>
 </body>
 
 </html>
